@@ -55,6 +55,8 @@ const FakeBayc = () => {
       total totalSupply : {totalSupply}
       <br />
       <button onClick={claimaToken}>claim a token</button>
+      <br />
+      <p>Make a changement</p>
     </div>
   );
 };
