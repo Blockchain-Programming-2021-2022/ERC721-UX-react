@@ -7,6 +7,7 @@ import FakeBaycDisplay from "./components/FakeBaycDisplay";
 import { BlockchainProvider } from "./BlockchainContext";
 import FakeNeftrurians from "./pages/FakeNeftrurians";
 import FakeNefturiansDisplay from "./components/FakeNefturiansDisplay";
+import FakeMeebits from "./pages/FakeMeebits";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/fakeNefturians" element={<FakeNeftrurians />}>
             <Route path=":userAddress" element={<FakeNefturiansDisplay />} />
           </Route>
+          <Route path="/fakeMeebits" element={<FakeMeebits />} />
         </Routes>
       </BrowserRouter>
     </BlockchainProvider>

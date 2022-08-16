@@ -21,6 +21,9 @@ const Navigation = () => {
         <NavLink style={navLinkStyles} to="/fakeNefturians">
           <li>FakeNeftrurians</li>
         </NavLink>
+        <NavLink style={navLinkStyles} to="/fakeMeebits">
+          <li>FakeMeebits</li>
+        </NavLink>
       </ul>
     </div>
   );
