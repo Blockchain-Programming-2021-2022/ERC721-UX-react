@@ -2,17 +2,24 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
+  const navLinkStyles = ({ isActive }) => {
+    return { fontWeight: isActive ? "bold" : "normal" };
+  };
+
   return (
     <div className="navigation">
       <ul>
-        <NavLink to="/">
+        <NavLink style={navLinkStyles} to="/">
           <li>Acceuil</li>
         </NavLink>
-        <NavLink to="/chainInfo">
+        <NavLink style={navLinkStyles} to="/chainInfo">
           <li>chainInfo</li>
         </NavLink>
-        <NavLink to="/fakeBayc">
+        <NavLink style={navLinkStyles} to="/fakeBayc">
           <li>FakeBayc</li>
+        </NavLink>
+        <NavLink style={navLinkStyles} to="/fakeNefturians">
+          <li>FakeNeftrurians</li>
         </NavLink>
       </ul>
     </div>

@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navigation from "../components/Navigation";
 import { ethers } from "ethers";
 
 import FakeBaycAbi from "../abiStorage/FakeBayc.json";
+import { Link, Outlet } from "react-router-dom";
+import { BlockchainContext } from "../BlockchainContext";
+import FakeBaycDisplay from "../components/FakeBaycDisplay";
 
 const FakeBayc = () => {
-  const [connectedContract, setConnectedContract] = useState(null);
   const [nameToken, setNameToken] = useState("");
-  const [totalSupply, setTotalSupply] = useState("");
+  const [nftId, setNftId] = useState(0);
+
+  const {
+    connectedContract,
+    setConnectedContract,
+    totalSupply,
+    setTotalSupply,
+  } = useContext(BlockchainContext);
 
   const getConnectedContract = async () => {
     const { ethereum } = window;
@@ -21,11 +30,11 @@ const FakeBayc = () => {
       signer
     );
     setConnectedContract(connectedContract);
+    displayInfo(connectedContract);
   };
 
-  const displayInfo = async () => {
+  const displayInfo = async (connectedContract) => {
     try {
-      console.log(connectedContract);
       const name = await connectedContract.name();
       setNameToken(name);
       const totalSupply = await connectedContract.totalSupply();
@@ -48,8 +57,6 @@ const FakeBayc = () => {
       <Navigation />
       FakeBayc
       <br />
-      <button onClick={displayInfo}>Display infos</button>
-      <br />
       name of the token : {nameToken}
       <br />
       total totalSupply : {totalSupply}
@@ -57,6 +64,14 @@ const FakeBayc = () => {
       <button onClick={claimaToken}>claim a token</button>
       <br />
       <p>Make a changement</p>
+      <input
+        type="text"
+        value={nftId}
+        onChange={(newval) => setNftId(newval.target.value)}
+      />
+      {nftId && "hello"}
+      <Link to={nftId}>text</Link>
+      <Outlet />
     </div>
   );
 };

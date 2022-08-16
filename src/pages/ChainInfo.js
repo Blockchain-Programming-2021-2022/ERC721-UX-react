@@ -28,6 +28,7 @@ const ChainInfo = () => {
   };
 
   useEffect(() => {
+    console.log("in");
     getChainId();
     if (window.ethereum.isConnected()) {
       handleClickConnect();
@@ -40,10 +41,9 @@ const ChainInfo = () => {
       method: "wallet_switchEthereumChain",
       params: [{ chainId: "0x4" }], // chainId must be in hexadecimal numbers
     });
+    getChainId();
     handleClickConnect();
     setErrorPage(false);
-
-    window.location.reload();
   });
 
   return (
